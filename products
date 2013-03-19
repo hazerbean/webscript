@@ -1,0 +1,85 @@
+<?php
+  include("includes/db.php");
+	include("includes/functions.php");
+	
+	if($_REQUEST['command']=='add' && $_REQUEST['productid']>0){
+		$pid=$_REQUEST['productid'];
+		addtocart($pid,1);
+		header("location:shoppingcart.php");
+		exit();
+	}
+	
+?>
+<!DOCTYPE html>
+<head>
+
+<title>Products</title>
+<script language="javascript">
+	function addtocart(pid){
+		document.form1.productid.value=pid;
+		document.form1.command.value='add';
+		document.form1.submit();
+	}
+
+</script>
+<script src="script.js"></script>
+<link rel="stylesheet" type="text/css" href="10.css" />
+</head>
+
+<body>
+<nav class = "navigation">
+			<p><a class="nav"  onclick="window.location='index.html'">Homepage</a></p>
+			<p><a class="nav" onclick="window.location='products.php'">Products</a></p>
+			<p><a class="nav" onclick="window.location='shoppingcart.php'">Basket</a></p>
+			<p><a class="nav"  onclick="window.location='cmsTools.php'">CMS tools</a></p>
+			</nav>
+
+
+<footer class ="footer">
+	<h1>Products</h1>
+</footer>
+
+<article class = "content">
+	<p>
+		<form action="" >
+			<fieldset> 
+			<p><input type="text" id="q" onchange="findProduct(q.value)"/>
+			<input type="button" onclick="findCatagory(q.value)" value="submit"></p>
+		<!--	
+			<p><select name="customer" onchange="findCatagory(this.value)">
+			<option value="">Select a catagory:</option>
+			<option value="Computing">Computing</option>
+			<option value="Books">Books</option>
+			<option value="CD/DVD">CD/DVD's</option>
+			<option value="Gaming">Gaming</option>
+			</p>
+			-->
+			</fieldset> 	
+			</form> 
+	<form name="form1">
+		<input type="hidden" name="productid" />
+		<input type="hidden" name="command" />
+	</form>
+		
+	<div id = "changer">
+		<table class = "table" border="0" cellpadding="2px" width="70%">
+			<?php
+				$result=mysql_query("select * from products") or die("select * from products"."<br/><br/>".mysql_error());
+				while($row=mysql_fetch_array($result)){
+			?>
+			<tr>
+				<td><img class="image" onclick= "window.open(this.src)" src="<?php echo $row['picture']?>" /></td>
+				<td><?php echo $row['name']?>
+					<p><?php echo $row['description']?><p/>
+					<p>Price £ <?php echo $row['price']?></p>
+					<p>serial ID <?php echo $row['serial']?></p></td>
+				<td><input type="button" value="Add to Cart" onclick="addtocart(<?php echo $row['serial']?>)"></td>
+			
+		</tr>
+			<tr><td colspan="3"><hr size="1"/></td>
+			<?php } ?>
+		</table>
+	</div>
+</article>
+</body>
+</html>
