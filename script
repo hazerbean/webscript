@@ -1,0 +1,174 @@
+
+function findProduct(str)
+{
+var xmlhttp;    
+if (str=="")
+  {
+  document.getElementById("changer").innerHTML="";
+  return;
+  }
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("changer").innerHTML=xmlhttp.responseText  
+    }
+  }
+xmlhttp.open("GET","search.php?q="+str,true);
+//spinner;
+xmlhttp.send();
+}
+
+function findProductupdate(str)
+{
+var xmlhttp;    
+if (str=="")
+  {
+  document.getElementById("changers").innerHTML="";
+  return;
+  }
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("changers").innerHTML=xmlhttp.responseText	
+    }
+  }
+xmlhttp.open("GET","searchup.php?q="+str,true);
+//spinner;
+xmlhttp.send();
+}
+
+
+
+
+function deleteProduct(str)
+{
+var xmlhttp;    
+if (str=="")
+  {
+  document.getElementById("deleteMes").innerHTML="";
+  return;
+  }
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("deleteMes").innerHTML=xmlhttp.responseText	
+    }
+  }
+xmlhttp.open("GET","deleteProduct.php?q="+str,true);
+//spinner;
+xmlhttp.send();
+}
+
+function findCatagory(str)
+{
+var xmlhttp;    
+if (str=="")
+  {
+  document.getElementById("changer").innerHTML="";
+  return;
+  }
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("changer").innerHTML=xmlhttp.responseText
+	p.responseText;
+    }
+  }
+xmlhttp.open("GET","getCata.php?q="+str,true);
+//spinner;
+xmlhttp.send();
+}
+
+function findOrder(str)
+{
+var xmlhttp;    
+if (str=="")
+  {
+  document.getElementById("order").innerHTML="";
+  return;
+  }
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("order").innerHTML=xmlhttp.responseText
+    }
+  }
+xmlhttp.open("GET","getOrder.php?q="+str,true);
+//spinner;
+xmlhttp.send();
+}
+
+function updateProduct(serial,name,description,price,catagory)
+{
+var xmlhttp;    
+if (serial=="")
+  {
+  document.getElementById("updates").innerHTML="";
+  return;
+  }
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("updates").innerHTML=xmlhttp.responseText
+    }
+  }
+xmlhttp.open("GET","UpdateProduct.php?q="+serial+"&r="+name+"&p="+description+"&s="+price+"&k="+catagory,true);
+//spinner;
+xmlhttp.send();
+}
+//&badger=tasty&green=fish'
+
