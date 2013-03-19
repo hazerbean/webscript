@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<!--This is the where you declare what type of html you are using for 
+the text document the current one is html 5-->
+<html>
+  <head>
+		<meta name="description" content="eccomerce"/>
+		<meta name="keywords" content="Buy, shop, HTML5"/>
+		<script>
+		var b = document.getElementById('stock').value;
+		
+			function myEventHandler(e) {
+				 alert("You have added" + name + "at the stock value of" + stock); 
+			}
+			function del(){
+			if(confirm('Do you really want to delete this item')){
+			document.form1.submit();
+					}
+					}
+			function update(){
+			if(confirm('Do you really want to update this item')){
+			document.form1.submit();
+					}
+					}
+			function validateStock(){	
+					if (b > 1){
+					alert("You have inputted an invalid stock"); 
+					}
+					else{
+						form.submit()
+					}
+				}
+				</script>
+					<script>
+				
+function showCustomer(str)
+{
+var xmlhttp;    
+if (str=="")
+  {
+  document.getElementById("txtHint").innerHTML="";
+  return;
+  }
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("GET","getcustomer.php?q="+str,true);
+//spinner;
+xmlhttp.send();
+}
+			</script>
+		<script src="script.js"></script>
+		<title>Add Product</title>
+		<link rel="stylesheet" type="text/css" href="10.css" />
+	<!--This is the link between the css page and the html page it corrisponds to. all of it has been checked and validated on w3c validator but can't have a
+	refer link because it will read the html page not the external styles sheet.-->
+	</head>
+	<body>
+
+		<nav class = "navigation">
+			<p><a class="nav"  onclick="window.location='index.html'">Homepage</a></p>
+			<p><a class="nav" onclick="window.location='products.php'">Products</a></p>
+			<p><a class="nav" onclick="window.location='shoppingcart.php'">Basket</a></p>
+			<p><a class="nav"  onclick="window.location='cmsTools.php'">CMS tools</a></p>
+			</nav>
+		
+				<!-- this tag has it's position fixed at all times so the user always has a navigation to other pages present.
+		i was interially intending on using javascript but that invalidated my page.-->
+	
+
+		<footer class ="footer">
+			<h1>Q-Bay</h1>
+		</footer>	
+		<!--the content, navigation and footer class elements should only be used once else they will overlap the existing content
+		due to the styling that is used. While this means i can't use these specifc tags more than once i can still add other css tags 
+ 		within these sections that can altering the body to give of a background or using a class tags to change specific tables or fonts.-->
+
+
+		<article class = "content">
+		<h3>Add A Product</h3>
+			<form id="form" form action="addproduct.php" method="POST" enctype="multipart/form-data">
+				<fieldset>  
+					<p>name:  <input type="text" name="name"/></p> 
+					<p>discription:  <input type="text" name="discp" size="50" rows="50"/></p> 
+					<p>price:  <input type="text" name="price"/></p>
+					<p>stock: <input type="text" name="stock"/></p>
+					<p>
+					 Catagory: <select name="catagory">
+					<option value="">Select a catagory:</option>
+					<option value="Computing">Computing</option>
+					<option value="Books">Books</option>
+					<option value="CD/DVD">CD/DVD's</option>
+					<option value="Gaming">Gaming</option>
+					</select>
+					</p>
+					<p>Filename: <input type="file" name="file" id="file" size="40" /></p>
+					<input type="button" value="create record" onclick="validateStock()"/> 
+					<input type="reset" value="Clear and Restart"/></P>
+				</fieldset> 
+			</form> 
+			
+			<h3>delete a Product</h3>
+			<form action="">
+				<fieldset> 
+				<p>serial code:  <input id ="dele" type="text" name="code"/></p> 
+				<input type="button" value="Delete" onclick="deleteProduct(dele.value)"/> 
+				<input type="reset" value="Clear and Restart"/></P>
+				</fieldset>
+			</form>
+			<p>
+			<div id = "deleteMes">
+			</div>
+			</p>
+			
+			<h3>Update A Product</h3>
+			<form action="">
+				<fieldset> 
+				<p>Serial id:<input type="text" name="serial" id="serial"/></p> 
+				<form>
+				<p><input type="button" value="Get Product" onclick="findProductupdate(serial.value)"/></p>
+				<div id = "changers">
+				</div>
+				</form>
+				<p>Changed fields</p>
+				<p>Name:  <input type="text" name="name" id="name"/></p> 
+				<p>Discription:  <input type="text" name="discp" id="discp"/></p> 
+				<p>Price:  <input type="text" name="price" id="price"/></p> 
+				<p>Catagory: <select name="catagory">
+					<option value="">Select a catagory:</option>
+					<option value="Computing">Computing</option>
+					<option value="Books">Books</option>
+					<option value="CD/DVD">CD/DVD's</option>
+					<option value="Gaming">Gaming</option>
+					</select></p>
+				<input type="button" value="change" onclick="updateProduct(serial.value,name.value,descp.value,price.value,catagory.value)"/> 
+				<input type="reset" value="Clear and Restart"/></P>
+				
+				</fieldset> 
+			</form>
+			
+			<div id = "updates">
+				</div>
+			<h3>Customer information</h3>
+			<form action=""> 
+			<select name="customers" onchange="showCustomer(this.value)">
+			<option value="">Select a customer:</option>
+			<option value="1">serial 1</option>
+			<option value="2">serial 2</option>
+			<option value="3">serial 3</option>
+			</select>
+			</form>
+			<p>
+			<div id="txtHint">
+			</div>
+			</p>
+			
+			<h3>Order details</h3>
+			<form action "">
+			Date<input type = "date" id = "dateOrder">
+			<input value ="submit" type= "button" onclick="findOrder(dateOrder.value)">
+			</form>
+			<div id = "order">
+			</div>
+			
+				<!--This image is being positioned by linking it by a section id to my css code-->
+			<p>
+			
+				<a class="nav" href="javascript:scroll(0,0)">Top of page</a>
+			</p>
+			<!--This is a link is javascript changing the scroll position to the top of the page.-->
+		</article> 
+	</body>
+</html>
